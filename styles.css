@@ -33,6 +33,8 @@ body, html {
     color: #ffffff;
     font-weight: 700;
     letter-spacing: 0.02em;
+    font-size: 3em;           /* Make it 3x bigger */
+    text-transform: uppercase; /* All caps */
 }
 
 .nav-links a {
