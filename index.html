@@ -1,290 +1,787 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light">
   <head>
-    <!-- Basic metadata -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Portfolio of videos and photos." />
-
+    <meta name="description" content="Portfolio — videos and photos." />
     <title>Your Name — Portfolio</title>
 
-    <!-- Main stylesheet -->
-    <link rel="stylesheet" href="styles.css" />
+    <style>
+      /* =========================================================
+        THEME TOKENS
+        - Light mode: bright safety orange text on white
+        - Dark mode: white text on dark navy
+      ========================================================== */
+      :root {
+        --bg: #ffffff;
+        --text: #ff5a00; /* safety orange (legible on white) */
+        --muted: rgba(255, 90, 0, 0.78);
+        --rule: rgba(255, 90, 0, 0.28);
+        --link-underline: rgba(255, 90, 0, 0.65);
 
-    <!-- Optional: Preconnect for faster embed loading (YouTube/Vimeo) -->
-    <link rel="preconnect" href="https://www.youtube.com" />
-    <link rel="preconnect" href="https://player.vimeo.com" />
+        --navy: #071421;
+        --max: 1180px;
+        --sidebar: 360px;
+        --gap: 34px;
+
+        --body-font: "Courier New", Courier, monospace;
+        --headline-font: Arial, Helvetica, sans-serif;
+      }
+
+      html[data-theme="dark"] {
+        --bg: var(--navy);
+        --text: #ffffff;
+        --muted: rgba(255, 255, 255, 0.72);
+        --rule: rgba(255, 255, 255, 0.18);
+        --link-underline: rgba(255, 255, 255, 0.65);
+      }
+
+      /* =========================================================
+        BASE
+      ========================================================== */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: var(--body-font);
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.45;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: var(--headline-font);
+        font-weight: 700; /* Arial bold */
+        color: var(--text);
+        margin: 0;
+      }
+
+      p {
+        margin: 0;
+      }
+
+      a {
+        color: var(--text);
+        text-decoration: underline;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 2px;
+        text-decoration-color: var(--link-underline);
+      }
+
+      a:hover {
+        opacity: 0.85;
+      }
+
+      .muted {
+        color: var(--muted);
+      }
+
+      /* =========================================================
+        TOP-RIGHT DARK MODE TOGGLE
+      ========================================================== */
+      .topbar {
+        position: fixed;
+        top: 14px;
+        right: 16px;
+        z-index: 1000;
+        pointer-events: none; /* so only button is clickable */
+      }
+
+      .theme-toggle {
+        pointer-events: auto;
+        font-family: var(--body-font);
+        font-size: 13px;
+        color: var(--text);
+        background: transparent;
+        border: 1px solid var(--rule);
+        padding: 8px 10px;
+        border-radius: 999px;
+        cursor: pointer;
+      }
+
+      .theme-toggle:hover {
+        opacity: 0.9;
+      }
+
+      .theme-toggle:focus-visible {
+        outline: 2px solid var(--text);
+        outline-offset: 3px;
+      }
+
+      /* =========================================================
+        LAYOUT (matches screenshot feel)
+        - Left: sticky index with generous whitespace
+        - Right: project content
+      ========================================================== */
+      .page {
+        width: min(100% - 36px, var(--max));
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: var(--sidebar) 1fr;
+        gap: var(--gap);
+        padding: 26px 0 70px;
+      }
+
+      /* LEFT */
+      .sidebar-inner {
+        position: sticky;
+        top: 18px;
+        padding-right: 8px;
+      }
+
+      .intro h1 {
+        font-size: 16px; /* small, like the reference */
+        margin-bottom: 14px;
+      }
+
+      .bio {
+        font-size: 14px;
+        margin-bottom: 22px;
+      }
+
+      .index-block {
+        margin-top: 18px;
+      }
+
+      .index-block h2 {
+        font-size: 14px;
+        margin-bottom: 6px;
+      }
+
+      .index-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        font-size: 14px;
+      }
+
+      .index-list li {
+        margin: 3px 0;
+      }
+
+      /* “Brand + italic title” like the screenshot */
+      .work-item .brand {
+        font-style: normal;
+      }
+
+      .work-item em {
+        font-style: italic;
+      }
+
+      .sidebar-footer {
+        margin-top: 26px;
+        padding-top: 14px;
+        border-top: 1px solid var(--rule);
+        font-size: 13px;
+      }
+
+      /* RIGHT */
+      .content {
+        min-width: 0;
+      }
+
+      .project {
+        padding: 0 0 34px;
+        margin: 0 0 34px;
+        border-bottom: 1px solid var(--rule);
+      }
+
+      .project-head {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 14px;
+        margin-bottom: 16px;
+      }
+
+      .project-client {
+        font-size: 14px;
+        font-weight: 700;
+      }
+
+      .project-title {
+        font-size: 14px;
+        font-weight: 700;
+        font-style: italic;
+        margin-top: 10px;
+      }
+
+      .project-number {
+        font-family: var(--body-font);
+        font-size: 14px;
+        letter-spacing: 0.12em;
+        white-space: nowrap;
+      }
+
+      .project-meta {
+        font-size: 14px;
+        color: var(--muted);
+        margin-bottom: 16px;
+      }
+
+      .project-meta p {
+        margin: 2px 0;
+      }
+
+      /* =========================================================
+        VIDEO EMBEDS
+      ========================================================== */
+      .embed {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        background: color-mix(in srgb, var(--bg) 92%, var(--text) 8%);
+        border: 1px solid var(--rule);
+      }
+
+      .embed iframe {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+
+      /* =========================================================
+        PHOTO CAROUSEL (no grid)
+      ========================================================== */
+      .carousel {
+        position: relative;
+        border: 1px solid var(--rule);
+        background: var(--bg);
+        overflow: hidden;
+      }
+
+      .carousel-viewport {
+        overflow: hidden;
+        width: 100%;
+      }
+
+      .carousel-track {
+        display: flex;
+        transition: transform 260ms ease;
+        will-change: transform;
+      }
+
+      .carousel-slide {
+        min-width: 100%;
+        margin: 0;
+      }
+
+      .carousel-slide img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .carousel-caption {
+        padding: 10px 12px 12px;
+        font-size: 14px;
+        color: var(--muted);
+        border-top: 1px solid var(--rule);
+      }
+
+      .carousel-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        border: 1px solid var(--rule);
+        background: color-mix(in srgb, var(--bg) 88%, transparent 12%);
+        color: var(--text);
+        width: 38px;
+        height: 38px;
+        border-radius: 999px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      .carousel-btn.prev {
+        left: 10px;
+      }
+      .carousel-btn.next {
+        right: 10px;
+      }
+
+      .carousel-dots {
+        position: absolute;
+        left: 12px;
+        right: 12px;
+        bottom: 10px;
+        display: flex;
+        gap: 6px;
+        justify-content: center;
+      }
+
+      .carousel-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        border: 1px solid var(--text);
+        background: transparent;
+        cursor: pointer;
+        padding: 0;
+      }
+
+      .carousel-dot[aria-current="true"] {
+        background: var(--text);
+      }
+
+      .carousel[data-slides="1"] .carousel-btn,
+      .carousel[data-slides="1"] .carousel-dots {
+        display: none;
+      }
+
+      /* =========================================================
+        MOBILE STACK
+      ========================================================== */
+      @media (max-width: 860px) {
+        .page {
+          grid-template-columns: 1fr;
+          gap: 22px;
+        }
+
+        .sidebar-inner {
+          position: static;
+          border-bottom: 1px solid var(--rule);
+          padding-bottom: 18px;
+          margin-bottom: 6px;
+        }
+
+        .topbar {
+          top: 10px;
+          right: 10px;
+        }
+      }
+    </style>
   </head>
 
   <body>
-    <!-- Skip link for accessibility -->
-    <a class="skip-link" href="#main">Skip to content</a>
+    <!-- Top-right theme toggle -->
+    <div class="topbar">
+      <button class="theme-toggle" type="button" id="themeToggle" aria-pressed="false">
+        Dark mode
+      </button>
+    </div>
 
-    <!-- =========================================================
-         HEADER / NAV
-         - Sticky top nav with simple links
-         - Edit the site title + nav labels as you like
-    ========================================================== -->
-    <header class="site-header">
-      <div class="container header-inner">
-        <a class="brand" href="#top" aria-label="Go to top">
-          <span class="brand-mark">●</span>
-          <span class="brand-text">Your Name</span>
-        </a>
-
-        <nav class="nav" aria-label="Primary">
-          <a href="#work">Work</a>
-          <a href="#photos">Photos</a>
-          <a href="#about">About</a>
-          <a class="nav-cta" href="#contact">Contact</a>
-        </nav>
-      </div>
-    </header>
-
-    <main id="main">
-      <!-- =========================================================
-           HERO
-           - Replace headline/subtitle to match your vibe
-           - Add your location, specialties, etc.
-      ========================================================== -->
-      <section id="top" class="hero">
-        <div class="container hero-inner">
-          <div class="hero-text">
-            <p class="kicker">Video • Photo • Creative</p>
-            <h1>
-              Minimal portfolio showcasing
-              <span class="muted">videos and photographs</span>.
-            </h1>
-            <p class="lead">
-              A clean, fast-loading space for selected work. Swap in your
-              embeds, images, and copy—then push to GitHub to publish.
+    <div class="page">
+      <!-- LEFT COLUMN / INDEX (reformatted to match screenshot style) -->
+      <aside class="sidebar">
+        <div class="sidebar-inner">
+          <header class="intro">
+            <h1><a href="#top">Your Name</a></h1>
+            <p class="bio muted">
+              City born and raised photographer and director.<br />
+              Founder and creative director of the brand YourBrand.
             </p>
-
-            <div class="hero-actions">
-              <a class="button" href="#work">View work</a>
-              <a class="button button-ghost" href="#about">About me</a>
-            </div>
-          </div>
-
-          <!-- Optional “featured” card (can be removed) -->
-          <aside class="hero-card" aria-label="Featured project">
-            <p class="card-label">Featured</p>
-            <h2 class="card-title">Project Title</h2>
-            <p class="card-text">
-              One-line description of your featured piece. Keep it short.
-            </p>
-            <a class="card-link" href="#work">See the videos →</a>
-          </aside>
-        </div>
-      </section>
-
-      <!-- =========================================================
-           VIDEO GALLERY / WORK
-           - Each item uses an iframe wrapper for responsive embeds
-           - Replace the iframe "src" with your YouTube/Vimeo embed link
-      ========================================================== -->
-      <section id="work" class="section">
-        <div class="container">
-          <header class="section-header">
-            <h2>Work</h2>
-            <p class="section-subtitle">Selected video projects.</p>
           </header>
 
-          <div class="grid videos">
-            <!-- Video item 1 -->
-            <article class="media-card">
-              <div class="embed">
-                <!-- PLACEHOLDER EMBED (YouTube) -->
-                <!-- Replace the src with your YouTube embed URL:
-                     https://www.youtube.com/embed/VIDEO_ID
-                     or Vimeo embed URL:
-                     https://player.vimeo.com/video/VIDEO_ID
-                -->
-                <iframe
-                  src="https://www.youtube.com/embed/VIDEO_ID_HERE"
-                  title="Video title 1"
-                  loading="lazy"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen
-                ></iframe>
-              </div>
-              <div class="media-meta">
-                <h3>Video Title One</h3>
-                <p>Short description (client, role, year).</p>
-              </div>
-            </article>
-
-            <!-- Video item 2 -->
-            <article class="media-card">
-              <div class="embed">
-                <iframe
-                  src="https://player.vimeo.com/video/VIDEO_ID_HERE"
-                  title="Video title 2"
-                  loading="lazy"
-                  allow="autoplay; fullscreen; picture-in-picture"
-                  allowfullscreen
-                ></iframe>
-              </div>
-              <div class="media-meta">
-                <h3>Video Title Two</h3>
-                <p>Short description (concept, tools, location).</p>
-              </div>
-            </article>
-
-            <!-- Video item 3 -->
-            <article class="media-card">
-              <div class="embed">
-                <iframe
-                  src="https://www.youtube.com/embed/VIDEO_ID_HERE"
-                  title="Video title 3"
-                  loading="lazy"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen
-                ></iframe>
-              </div>
-              <div class="media-meta">
-                <h3>Video Title Three</h3>
-                <p>Short description (style, format, duration).</p>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- =========================================================
-           PHOTO GALLERY
-           - Replace image src paths with your actual files
-           - Keep filenames simple (no spaces is best)
-      ========================================================== -->
-      <section id="photos" class="section section-alt">
-        <div class="container">
-          <header class="section-header">
-            <h2>Photos</h2>
-            <p class="section-subtitle">A small selection of stills.</p>
-          </header>
-
-          <div class="grid photos">
-            <!-- Photo item 1 -->
-            <figure class="photo-card">
-              <!-- Replace with: assets/photos/your-photo.jpg -->
-              <img
-                src="assets/photos/photo-1.jpg"
-                alt="Placeholder photo description 1"
-                loading="lazy"
-              />
-              <figcaption>Caption or location (optional)</figcaption>
-            </figure>
-
-            <!-- Photo item 2 -->
-            <figure class="photo-card">
-              <img
-                src="assets/photos/photo-2.jpg"
-                alt="Placeholder photo description 2"
-                loading="lazy"
-              />
-              <figcaption>Caption or project (optional)</figcaption>
-            </figure>
-
-            <!-- Photo item 3 -->
-            <figure class="photo-card">
-              <img
-                src="assets/photos/photo-3.jpg"
-                alt="Placeholder photo description 3"
-                loading="lazy"
-              />
-              <figcaption>Caption (optional)</figcaption>
-            </figure>
-
-            <!-- Photo item 4 -->
-            <figure class="photo-card">
-              <img
-                src="assets/photos/photo-4.jpg"
-                alt="Placeholder photo description 4"
-                loading="lazy"
-              />
-              <figcaption>Caption (optional)</figcaption>
-            </figure>
-          </div>
-        </div>
-      </section>
-
-      <!-- =========================================================
-           ABOUT
-           - Add a short bio, services, gear list, etc.
-      ========================================================== -->
-      <section id="about" class="section">
-        <div class="container about">
-          <header class="section-header">
-            <h2>About</h2>
-            <p class="section-subtitle">A quick intro.</p>
-          </header>
-
-          <div class="about-grid">
-            <div class="about-text">
-              <p>
-                I’m <strong>Your Name</strong>, a creator focused on clean,
-                story-driven visuals. This site is intentionally minimal to keep
-                attention on the work.
-              </p>
-              <p>
-                Add your specialties here (commercial, documentary, portraits,
-                etc.) and a sentence about your process or what you enjoy
-                building.
-              </p>
-            </div>
-
-            <ul class="about-list" aria-label="Highlights">
-              <li><span>Services</span><span>Video / Photo / Edit</span></li>
-              <li><span>Based</span><span>Chicago (example)</span></li>
-              <li><span>Available</span><span>Freelance / Collabs</span></li>
-              <li><span>Tools</span><span>Premiere / Resolve / Lightroom</span></li>
+          <section class="index-block" aria-label="Work index">
+            <h2>Work:</h2>
+            <ul class="index-list">
+              <li class="work-item">
+                <a href="#p000"><span class="brand">Arc’teryx</span> <em>Keep it Real 1</em></a>
+              </li>
+              <li class="work-item">
+                <a href="#p001"><span class="brand">Adidas</span> <em>Berlin Half</em></a>
+              </li>
+              <li class="work-item">
+                <a href="#p002"><span class="brand">Arc’teryx</span> <em>Keep it Real 2</em></a>
+              </li>
+              <li class="work-item">
+                <a href="#p003"><span class="brand">Brand</span> <em>Campaign Title</em></a>
+              </li>
             </ul>
-          </div>
+          </section>
+
+          <section class="index-block" aria-label="Personal index">
+            <h2>Personal:</h2>
+            <ul class="index-list">
+              <li><a href="#p010">Fragments</a></li>
+              <li><a href="#p011">Bouldering</a></li>
+            </ul>
+          </section>
+
+          <section class="index-block" aria-label="Contact">
+            <h2>Contact:</h2>
+            <ul class="index-list">
+              <li><a href="mailto:you@example.com">you@example.com</a></li>
+              <li><a href="https://instagram.com/" target="_blank" rel="noreferrer">Instagram</a></li>
+            </ul>
+          </section>
+
+          <footer class="sidebar-footer muted">
+            <p>© 2026 Your Name</p>
+          </footer>
         </div>
-      </section>
+      </aside>
 
-      <!-- =========================================================
-           CONTACT
-           - Use a mailto link for zero-maintenance contact
-      ========================================================== -->
-      <section id="contact" class="section section-alt">
-        <div class="container contact">
-          <header class="section-header">
-            <h2>Contact</h2>
-            <p class="section-subtitle">Let’s make something.</p>
-          </header>
-
-          <div class="contact-card">
-            <p>
-              Email:
-              <a href="mailto:you@example.com">you@example.com</a>
-            </p>
-            <p class="muted">
-              Optional: add Instagram / Vimeo / YouTube links below.
-            </p>
-
-            <div class="social">
-              <a href="#" aria-label="Instagram link">Instagram</a>
-              <a href="#" aria-label="Vimeo link">Vimeo</a>
-              <a href="#" aria-label="YouTube link">YouTube</a>
+      <!-- RIGHT COLUMN / CONTENT -->
+      <main class="content" id="top">
+        <!-- 000 -->
+        <article class="project" id="p000">
+          <div class="project-head">
+            <div>
+              <div class="project-client"><a href="#p000">Arc’teryx</a></div>
+              <div class="project-title">Keep it Real 1</div>
             </div>
+            <div class="project-number">000</div>
           </div>
-        </div>
-      </section>
-    </main>
 
-    <!-- =========================================================
-         FOOTER
-    ========================================================== -->
-    <footer class="site-footer">
-      <div class="container footer-inner">
-        <p>© <span id="year">2026</span> Your Name</p>
-        <a href="#top">Back to top ↑</a>
-      </div>
-    </footer>
+          <div class="project-meta">
+            <p>Directed and filmed by: Your Name</p>
+            <p>Photography: Your Name</p>
+            <p>Second Camera: Collaborator Name</p>
+          </div>
 
-    <!-- Tiny, optional JS-free year:
-         If you prefer no JS at all, just hardcode the year above.
-         Keeping it static is simplest for GitHub Pages. -->
+          <div class="embed">
+            <iframe
+              src="https://www.youtube.com/embed/aqz-KE-bpKQ"
+              title="Example YouTube embed"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </article>
+
+        <!-- 001 -->
+        <article class="project" id="p001">
+          <div class="project-head">
+            <div>
+              <div class="project-client"><a href="#p001">Adidas</a></div>
+              <div class="project-title">Berlin Half</div>
+            </div>
+            <div class="project-number">001</div>
+          </div>
+
+          <div class="project-meta">
+            <p>Role: Director / Editor</p>
+            <p>Location: Berlin</p>
+          </div>
+
+          <div class="embed">
+            <iframe
+              src="https://www.youtube.com/embed/yQNEKTOL_oA"
+              title="Example YouTube embed"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </article>
+
+        <!-- 002 -->
+        <article class="project" id="p002">
+          <div class="project-head">
+            <div>
+              <div class="project-client"><a href="#p002">Arc’teryx</a></div>
+              <div class="project-title">Keep it Real 2</div>
+            </div>
+            <div class="project-number">002</div>
+          </div>
+
+          <div class="project-meta">
+            <p>Role: Cinematography</p>
+            <p>Format: Short film</p>
+          </div>
+
+          <div class="embed">
+            <iframe
+              src="https://www.youtube.com/embed/3XA0bB79oGc"
+              title="Example YouTube embed"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </article>
+
+        <!-- 003 -->
+        <article class="project" id="p003">
+          <div class="project-head">
+            <div>
+              <div class="project-client"><a href="#p003">Brand</a></div>
+              <div class="project-title">Campaign Title</div>
+            </div>
+            <div class="project-number">003</div>
+          </div>
+
+          <div class="project-meta">
+            <p>Role: Photo / Video</p>
+            <p>Notes: Replace with your real project.</p>
+          </div>
+
+          <div class="embed">
+            <iframe
+              src="https://www.youtube.com/embed/fO9e9jnhYK8"
+              title="Example YouTube embed"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </article>
+
+        <!-- 010 (carousel) -->
+        <article class="project" id="p010">
+          <div class="project-head">
+            <div>
+              <div class="project-client"><a href="#p010">Personal</a></div>
+              <div class="project-title">Fragments</div>
+            </div>
+            <div class="project-number">010</div>
+          </div>
+
+          <div class="project-meta">
+            <p>Click arrows (or swipe on mobile) to switch photos.</p>
+          </div>
+
+          <div class="carousel" data-carousel aria-label="Photo carousel 010">
+            <div class="carousel-viewport">
+              <div class="carousel-track" data-track>
+                <figure class="carousel-slide">
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/7/78/The_Blue_Marble.jpg"
+                    alt="The Blue Marble — Earth photographed during Apollo 17 (public domain NASA image via Wikimedia)"
+                    loading="lazy"
+                  />
+                  <figcaption class="carousel-caption">The Blue Marble (Apollo 17)</figcaption>
+                </figure>
+
+                <figure class="carousel-slide">
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/c/ce/Apollo_13_-_View_of_Earth.jpg"
+                    alt="Apollo 13 view of Earth (public domain NASA image via Wikimedia)"
+                    loading="lazy"
+                  />
+                  <figcaption class="carousel-caption">Apollo 13 — View of Earth</figcaption>
+                </figure>
+
+                <figure class="carousel-slide">
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Blue_Marble_2002.png/3840px-Blue_Marble_2002.png"
+                    alt="Blue Marble 2002 global mosaic (public domain NASA image via Wikimedia)"
+                    loading="lazy"
+                  />
+                  <figcaption class="carousel-caption">Blue Marble (2002 mosaic)</figcaption>
+                </figure>
+              </div>
+            </div>
+
+            <button class="carousel-btn prev" type="button" data-prev aria-label="Previous photo">‹</button>
+            <button class="carousel-btn next" type="button" data-next aria-label="Next photo">›</button>
+            <div class="carousel-dots" data-dots aria-label="Carousel pagination"></div>
+          </div>
+        </article>
+
+        <!-- 011 (carousel) -->
+        <article class="project" id="p011">
+          <div class="project-head">
+            <div>
+              <div class="project-client"><a href="#p011">Personal</a></div>
+              <div class="project-title">Bouldering</div>
+            </div>
+            <div class="project-number">011</div>
+          </div>
+
+          <div class="project-meta">
+            <p>Carousel presentation (one photo at a time).</p>
+          </div>
+
+          <div class="carousel" data-carousel aria-label="Photo carousel 011">
+            <div class="carousel-viewport">
+              <div class="carousel-track" data-track>
+                <figure class="carousel-slide">
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/6/60/Earth_from_Space.jpg"
+                    alt="Earth from Space (public domain NASA image via Wikimedia)"
+                    loading="lazy"
+                  />
+                  <figcaption class="carousel-caption">Series image 1</figcaption>
+                </figure>
+
+                <figure class="carousel-slide">
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/7/78/The_Blue_Marble.jpg"
+                    alt="The Blue Marble — Earth photographed during Apollo 17 (public domain NASA image via Wikimedia)"
+                    loading="lazy"
+                  />
+                  <figcaption class="carousel-caption">Series image 2</figcaption>
+                </figure>
+
+                <figure class="carousel-slide">
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/c/ce/Apollo_13_-_View_of_Earth.jpg"
+                    alt="Apollo 13 view of Earth (public domain NASA image via Wikimedia)"
+                    loading="lazy"
+                  />
+                  <figcaption class="carousel-caption">Series image 3</figcaption>
+                </figure>
+              </div>
+            </div>
+
+            <button class="carousel-btn prev" type="button" data-prev aria-label="Previous photo">‹</button>
+            <button class="carousel-btn next" type="button" data-next aria-label="Next photo">›</button>
+            <div class="carousel-dots" data-dots aria-label="Carousel pagination"></div>
+          </div>
+        </article>
+
+        <footer class="muted" style="font-size: 14px; padding-top: 6px;">
+          <a href="#top">Back to top</a>
+        </footer>
+      </main>
+    </div>
+
+    <script>
+      // =========================================================
+      // Dark mode toggle (top-right)
+      // - Persists via localStorage
+      // =========================================================
+      (function () {
+        const html = document.documentElement;
+        const btn = document.getElementById("themeToggle");
+        const KEY = "portfolio_theme";
+
+        function applyTheme(theme) {
+          html.setAttribute("data-theme", theme);
+          const isDark = theme === "dark";
+          btn.setAttribute("aria-pressed", String(isDark));
+          btn.textContent = isDark ? "Light mode" : "Dark mode";
+        }
+
+        const saved = localStorage.getItem(KEY);
+        if (saved === "dark" || saved === "light") applyTheme(saved);
+
+        btn.addEventListener("click", () => {
+          const next = html.getAttribute("data-theme") === "dark" ? "light" : "dark";
+          localStorage.setItem(KEY, next);
+          applyTheme(next);
+        });
+      })();
+
+      // =========================================================
+      // Carousel JS (vanilla)
+      // - Prev/Next
+      // - Dots
+      // - Keyboard arrows when focused
+      // - Touch swipe on mobile
+      // =========================================================
+      (function () {
+        const carousels = document.querySelectorAll("[data-carousel]");
+
+        carousels.forEach((carousel) => {
+          const track = carousel.querySelector("[data-track]");
+          const slides = Array.from(track.children);
+          const prevBtn = carousel.querySelector("[data-prev]");
+          const nextBtn = carousel.querySelector("[data-next]");
+          const dotsWrap = carousel.querySelector("[data-dots]");
+          let index = 0;
+
+          carousel.setAttribute("data-slides", String(slides.length));
+
+          // Build dots
+          if (dotsWrap) {
+            dotsWrap.innerHTML = "";
+            slides.forEach((_, i) => {
+              const dot = document.createElement("button");
+              dot.type = "button";
+              dot.className = "carousel-dot";
+              dot.setAttribute("aria-label", `Go to photo ${i + 1}`);
+              dot.setAttribute("aria-current", i === 0 ? "true" : "false");
+              dot.addEventListener("click", () => goTo(i));
+              dotsWrap.appendChild(dot);
+            });
+          }
+
+          function update() {
+            track.style.transform = `translateX(${-index * 100}%)`;
+            if (dotsWrap) {
+              const dots = dotsWrap.querySelectorAll(".carousel-dot");
+              dots.forEach((d, i) => d.setAttribute("aria-current", i === index ? "true" : "false"));
+            }
+          }
+
+          function goTo(i) {
+            index = (i + slides.length) % slides.length;
+            update();
+          }
+
+          function next() {
+            goTo(index + 1);
+          }
+
+          function prev() {
+            goTo(index - 1);
+          }
+
+          if (nextBtn) nextBtn.addEventListener("click", next);
+          if (prevBtn) prevBtn.addEventListener("click", prev);
+
+          // Keyboard support
+          carousel.tabIndex = 0;
+          carousel.addEventListener("keydown", (e) => {
+            if (e.key === "ArrowRight") next();
+            if (e.key === "ArrowLeft") prev();
+          });
+
+          // Touch swipe support
+          let startX = 0;
+          let deltaX = 0;
+          let touching = false;
+          const viewport = carousel.querySelector(".carousel-viewport");
+
+          if (viewport) {
+            viewport.addEventListener(
+              "touchstart",
+              (e) => {
+                if (!e.touches || e.touches.length !== 1) return;
+                touching = true;
+                startX = e.touches[0].clientX;
+                deltaX = 0;
+              },
+              { passive: true }
+            );
+
+            viewport.addEventListener(
+              "touchmove",
+              (e) => {
+                if (!touching || !e.touches || e.touches.length !== 1) return;
+                deltaX = e.touches[0].clientX - startX;
+              },
+              { passive: true }
+            );
+
+            viewport.addEventListener("touchend", () => {
+              if (!touching) return;
+              touching = false;
+              const threshold = 40;
+              if (deltaX > threshold) prev();
+              if (deltaX < -threshold) next();
+              startX = 0;
+              deltaX = 0;
+            });
+          }
+
+          update();
+        });
+      })();
+    </script>
   </body>
 </html>
