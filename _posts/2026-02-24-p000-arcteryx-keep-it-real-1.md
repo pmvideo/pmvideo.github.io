@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Arc’teryx — Keep it Real 1"
+title: "swagger — Keep it Real 1"
 date: 2026-02-24 00:00:00 +0000
 categories: [work]
 order: 0
