@@ -1,3 +1,12 @@
+How to update:
+
+Open GitHub Desktop
+Open Cursor
+Edit HTML or CSS files
+
+To add blog posts:
+
+
 📝 Blog Maintenance Guide
 This blog runs on Jekyll. You don't need to code new HTML pages for every entry; you just write in Markdown, and the site builds itself.
 
