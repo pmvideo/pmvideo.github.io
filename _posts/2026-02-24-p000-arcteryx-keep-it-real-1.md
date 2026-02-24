@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "swagger — Keep it Real 1"
+title: "Arc’teryx — Keep it Real 1"
 date: 2026-02-24 00:00:00 +0000
 categories: [work]
 order: 0
@@ -17,7 +17,7 @@ order: 0
   </div>
 
   <div class="project-meta">
-    <p>Directed and filmed by: Your Name</p>
+    <p>Directed and filmed by: MR. COol</p>
     <p>Photography: Barnabus Meiser</p>
     <p>Second Camera: Collaborator Name</p>
   </div>
