@@ -17,8 +17,8 @@ order: 0
   </div>
 
   <div class="project-meta">
-    <p>Directed and filmed by: Your Name</p>
-    <p>Photography: Your Name</p>
+    <p>Directed and filmed by: MR. COol</p>
+    <p>Photography: Barnabus Meiser</p>
     <p>Second Camera: Collaborator Name</p>
   </div>
 
