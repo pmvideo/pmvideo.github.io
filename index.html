@@ -1,78 +1,290 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+  <head>
+    <!-- Basic metadata -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Portfolio of videos and photos." />
+
+    <title>Your Name — Portfolio</title>
+
+    <!-- Main stylesheet -->
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Optional: Preconnect for faster embed loading (YouTube/Vimeo) -->
+    <link rel="preconnect" href="https://www.youtube.com" />
+    <link rel="preconnect" href="https://player.vimeo.com" />
+  </head>
+
+  <body>
+    <!-- Skip link for accessibility -->
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <!-- =========================================================
+         HEADER / NAV
+         - Sticky top nav with simple links
+         - Edit the site title + nav labels as you like
+    ========================================================== -->
     <header class="site-header">
-        <div class="header-inner">
-            <div class="brand">Patrick Moran</div>
-            <nav class="nav-links" aria-label="Primary">
-                <a href="#work">work</a>
-                <a href="#contact">contact</a>
-            </nav>
-        </div>
+      <div class="container header-inner">
+        <a class="brand" href="#top" aria-label="Go to top">
+          <span class="brand-mark">●</span>
+          <span class="brand-text">Your Name</span>
+        </a>
+
+        <nav class="nav" aria-label="Primary">
+          <a href="#work">Work</a>
+          <a href="#photos">Photos</a>
+          <a href="#about">About</a>
+          <a class="nav-cta" href="#contact">Contact</a>
+        </nav>
+      </div>
     </header>
-    <main>
+
+    <main id="main">
+      <!-- =========================================================
+           HERO
+           - Replace headline/subtitle to match your vibe
+           - Add your location, specialties, etc.
+      ========================================================== -->
+      <section id="top" class="hero">
+        <div class="container hero-inner">
+          <div class="hero-text">
+            <p class="kicker">Video • Photo • Creative</p>
+            <h1>
+              Minimal portfolio showcasing
+              <span class="muted">videos and photographs</span>.
+            </h1>
+            <p class="lead">
+              A clean, fast-loading space for selected work. Swap in your
+              embeds, images, and copy—then push to GitHub to publish.
+            </p>
+
+            <div class="hero-actions">
+              <a class="button" href="#work">View work</a>
+              <a class="button button-ghost" href="#about">About me</a>
+            </div>
+          </div>
+
+          <!-- Optional “featured” card (can be removed) -->
+          <aside class="hero-card" aria-label="Featured project">
+            <p class="card-label">Featured</p>
+            <h2 class="card-title">Project Title</h2>
+            <p class="card-text">
+              One-line description of your featured piece. Keep it short.
+            </p>
+            <a class="card-link" href="#work">See the videos →</a>
+          </aside>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           VIDEO GALLERY / WORK
+           - Each item uses an iframe wrapper for responsive embeds
+           - Replace the iframe "src" with your YouTube/Vimeo embed link
+      ========================================================== -->
+      <section id="work" class="section">
         <div class="container">
-            <!-- Left side with Vimeo video -->
-            <div class="left-side">
-                <div class="video-list">
-                    <!-- Vimeo video 1 (placeholder) -->
-                    <div class="video-wrapper">
-                        <iframe src="https://player.vimeo.com/video/137857207?title=0&byline=0&portrait=0&badge=0&controls=0&dnt=1" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                    <!-- Vimeo video 2 (placeholder) -->
-                    <div class="video-wrapper">
-                        <iframe src="https://player.vimeo.com/video/76979871?title=0&byline=0&portrait=0&badge=0&controls=0&dnt=1" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                    <!-- Vimeo video 3 (placeholder) -->
-                    <div class="video-wrapper">
-                        <iframe src="https://player.vimeo.com/video/22439234?title=0&byline=0&portrait=0&badge=0&controls=0&dnt=1" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                </div>
-            </div>
-            <!-- Right side with text content -->
-            <div class="right-side">
-                <div class="content">
-                    <div class="about-section">
-                        <p>A short paragraph about yourself. Keep it concise and engaging. This is where you can introduce yourself and your work to visitors.</p>
-                    </div>
-                    <div class="contact-info">
-                        <a href="mailto:your.email@example.com" class="contact-button">Email Me</a>
-                        <a href="#" class="contact-button">Social Link</a>
-                    </div>
-                </div>
-            </div>
+          <header class="section-header">
+            <h2>Work</h2>
+            <p class="section-subtitle">Selected video projects.</p>
+          </header>
+
+          <div class="grid videos">
+            <!-- Video item 1 -->
+            <article class="media-card">
+              <div class="embed">
+                <!-- PLACEHOLDER EMBED (YouTube) -->
+                <!-- Replace the src with your YouTube embed URL:
+                     https://www.youtube.com/embed/VIDEO_ID
+                     or Vimeo embed URL:
+                     https://player.vimeo.com/video/VIDEO_ID
+                -->
+                <iframe
+                  src="https://www.youtube.com/embed/VIDEO_ID_HERE"
+                  title="Video title 1"
+                  loading="lazy"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
+              </div>
+              <div class="media-meta">
+                <h3>Video Title One</h3>
+                <p>Short description (client, role, year).</p>
+              </div>
+            </article>
+
+            <!-- Video item 2 -->
+            <article class="media-card">
+              <div class="embed">
+                <iframe
+                  src="https://player.vimeo.com/video/VIDEO_ID_HERE"
+                  title="Video title 2"
+                  loading="lazy"
+                  allow="autoplay; fullscreen; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
+              </div>
+              <div class="media-meta">
+                <h3>Video Title Two</h3>
+                <p>Short description (concept, tools, location).</p>
+              </div>
+            </article>
+
+            <!-- Video item 3 -->
+            <article class="media-card">
+              <div class="embed">
+                <iframe
+                  src="https://www.youtube.com/embed/VIDEO_ID_HERE"
+                  title="Video title 3"
+                  loading="lazy"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
+              </div>
+              <div class="media-meta">
+                <h3>Video Title Three</h3>
+                <p>Short description (style, format, duration).</p>
+              </div>
+            </article>
+          </div>
         </div>
+      </section>
+
+      <!-- =========================================================
+           PHOTO GALLERY
+           - Replace image src paths with your actual files
+           - Keep filenames simple (no spaces is best)
+      ========================================================== -->
+      <section id="photos" class="section section-alt">
+        <div class="container">
+          <header class="section-header">
+            <h2>Photos</h2>
+            <p class="section-subtitle">A small selection of stills.</p>
+          </header>
+
+          <div class="grid photos">
+            <!-- Photo item 1 -->
+            <figure class="photo-card">
+              <!-- Replace with: assets/photos/your-photo.jpg -->
+              <img
+                src="assets/photos/photo-1.jpg"
+                alt="Placeholder photo description 1"
+                loading="lazy"
+              />
+              <figcaption>Caption or location (optional)</figcaption>
+            </figure>
+
+            <!-- Photo item 2 -->
+            <figure class="photo-card">
+              <img
+                src="assets/photos/photo-2.jpg"
+                alt="Placeholder photo description 2"
+                loading="lazy"
+              />
+              <figcaption>Caption or project (optional)</figcaption>
+            </figure>
+
+            <!-- Photo item 3 -->
+            <figure class="photo-card">
+              <img
+                src="assets/photos/photo-3.jpg"
+                alt="Placeholder photo description 3"
+                loading="lazy"
+              />
+              <figcaption>Caption (optional)</figcaption>
+            </figure>
+
+            <!-- Photo item 4 -->
+            <figure class="photo-card">
+              <img
+                src="assets/photos/photo-4.jpg"
+                alt="Placeholder photo description 4"
+                loading="lazy"
+              />
+              <figcaption>Caption (optional)</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           ABOUT
+           - Add a short bio, services, gear list, etc.
+      ========================================================== -->
+      <section id="about" class="section">
+        <div class="container about">
+          <header class="section-header">
+            <h2>About</h2>
+            <p class="section-subtitle">A quick intro.</p>
+          </header>
+
+          <div class="about-grid">
+            <div class="about-text">
+              <p>
+                I’m <strong>Your Name</strong>, a creator focused on clean,
+                story-driven visuals. This site is intentionally minimal to keep
+                attention on the work.
+              </p>
+              <p>
+                Add your specialties here (commercial, documentary, portraits,
+                etc.) and a sentence about your process or what you enjoy
+                building.
+              </p>
+            </div>
+
+            <ul class="about-list" aria-label="Highlights">
+              <li><span>Services</span><span>Video / Photo / Edit</span></li>
+              <li><span>Based</span><span>Chicago (example)</span></li>
+              <li><span>Available</span><span>Freelance / Collabs</span></li>
+              <li><span>Tools</span><span>Premiere / Resolve / Lightroom</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           CONTACT
+           - Use a mailto link for zero-maintenance contact
+      ========================================================== -->
+      <section id="contact" class="section section-alt">
+        <div class="container contact">
+          <header class="section-header">
+            <h2>Contact</h2>
+            <p class="section-subtitle">Let’s make something.</p>
+          </header>
+
+          <div class="contact-card">
+            <p>
+              Email:
+              <a href="mailto:you@example.com">you@example.com</a>
+            </p>
+            <p class="muted">
+              Optional: add Instagram / Vimeo / YouTube links below.
+            </p>
+
+            <div class="social">
+              <a href="#" aria-label="Instagram link">Instagram</a>
+              <a href="#" aria-label="Vimeo link">Vimeo</a>
+              <a href="#" aria-label="YouTube link">YouTube</a>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
-    <footer>
-        <div class="footer-content">
-            <div class="location">
-                <p>Birmingham, Alabama</p>
-                <p>Santa Cruz, California</p>
-            </div>
-            <div class="footer-contact">
-                <div class="social-icons">
-                    <!-- Instagram Icon -->
-                    <a href="#" aria-label="Instagram" title="Instagram">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" fill="currentColor" width="24" height="24">
-                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.054 1.97.24 2.427.403.61.223 1.047.49 1.507.95.46.46.727.897.95 1.507.163.457.349 1.257.403 2.427.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.054 1.17-.24 1.97-.403 2.427a3.92 3.92 0 0 1-.95 1.507 3.92 3.92 0 0 1-1.507.95c-.457.163-1.257.349-2.427.403-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.054-1.97-.24-2.427-.403a3.92 3.92 0 0 1-1.507-.95 3.92 3.92 0 0 1-.95-1.507c-.163-.457-.349-1.257-.403-2.427C2.175 15.784 2.163 15.404 2.163 12s.012-3.584.07-4.85c.054-1.17.24-1.97.403-2.427.223-.61.49-1.047.95-1.507.46-.46.897-.727 1.507-.95.457-.163 1.257-.349 2.427-.403C8.416 2.175 8.796 2.163 12 2.163zm0 1.622c-3.155 0-3.526.012-4.768.069-.998.046-1.54.213-1.9.354-.479.186-.821.407-1.18.766-.359.359-.58.701-.766 1.18-.141.36-.308.902-.354 1.9-.057 1.242-.069 1.613-.069 4.768s.012 3.526.069 4.768c.046.998.213 1.54.354 1.9.186.479.407.821.766 1.18.359.359.701.58 1.18.766.36.141.902.308 1.9.354 1.242.057 1.613.069 4.768.069s3.526-.012 4.768-.069c.998-.046 1.54-.213 1.9-.354.479-.186.821-.407 1.18-.766.359-.359.58-.701.766-1.18.141-.36.308-.902.354-1.9.057-1.242.069-1.613.069-4.768s-.012-3.526-.069-4.768c-.046-.998-.213-1.54-.354-1.9a3.097 3.097 0 0 0-.766-1.18 3.097 3.097 0 0 0-1.18-.766c-.36-.141-.902-.308-1.9-.354-1.242-.057-1.613-.069-4.768-.069zm0 3.905a4.31 4.31 0 1 1 0 8.62 4.31 4.31 0 0 1 0-8.62zm0 1.622a2.688 2.688 0 1 0 0 5.376 2.688 2.688 0 0 0 0-5.376zm5.54-3.238a1.006 1.006 0 1 1-2.012 0 1.006 1.006 0 0 1 2.013 0z"/>
-                        </svg>
-                    </a>
-                    <!-- YouTube Icon -->
-                    <a href="#" aria-label="YouTube" title="YouTube">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" fill="currentColor" width="24" height="24">
-                            <path d="M23.499 6.203a3.006 3.006 0 0 0-2.116-2.128C19.57 3.5 12 3.5 12 3.5s-7.57 0-9.383.575A3.006 3.006 0 0 0 .501 6.203C0 8.027 0 12 0 12s0 3.973.501 5.797a3.006 3.006 0 0 0 2.116 2.128C4.43 20.5 12 20.5 12 20.5s7.57 0 9.383-.575a3.006 3.006 0 0 0 2.116-2.128C24 15.973 24 12 24 12s0-3.973-.501-5.797zM9.75 15.5v-7L15.75 12l-6 3.5z"/>
-                        </svg>
-                    </a>
-                </div>
-                <p class="email">your.email@example.com</p>
-            </div>
-        </div>
+
+    <!-- =========================================================
+         FOOTER
+    ========================================================== -->
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>© <span id="year">2026</span> Your Name</p>
+        <a href="#top">Back to top ↑</a>
+      </div>
     </footer>
-</body>
+
+    <!-- Tiny, optional JS-free year:
+         If you prefer no JS at all, just hardcode the year above.
+         Keeping it static is simplest for GitHub Pages. -->
+  </body>
 </html>
