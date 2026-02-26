@@ -1,34 +1,29 @@
 ---
 layout: default
-title: "Arc’teryx — Keep it Real 2"
+title: "Reddit — IT'S POWER TO THE TRADERS NOW"
 date: 2026-02-24 00:20:00 +0000
 categories: [work]
 order: 2
 ---
-
 <!-- 002 -->
 <article class="project" id="p002">
   <div class="project-head">
     <div>
-      <div class="project-client"><a href="#p002">Arc’teryx</a></div>
-      <div class="project-title">Keep it Real 2</div>
+      <div class="project-client"><a href="#p002">Reddit</a></div>
+      <div class="project-title">IT'S POWER TO THE TRADERS NOW</div>
     </div>
     <div class="project-number">002</div>
   </div>
-
   <div class="project-meta">
-    <p>Role: Cinematography</p>
-    <p>Format: Short film</p>
+    <p>217,000+ upvotes on r/wallstreetbets</p>
+    <p>Viral post during Wall Street Bets drama</p>
   </div>
-
   <div class="embed">
-    <iframe
-      src="https://www.youtube.com/embed/3XA0bB79oGc"
-      title="Example YouTube embed"
+    <video
+      src="https://packaged-media.redd.it/lu8aekujd6e61/pb/m2-res_480p.mp4?m=DASHPlaylist.mpd&v=1&e=1772157600&s=5250ce160d761ba9b22e7a86f1dd78280e30e960"
+      controls
       loading="lazy"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen
-    ></iframe>
+      playsinline
+    ></video>
   </div>
 </article>
-
