@@ -1,0 +1,210 @@
+/* =========================================================
+  Minimal editorial portfolio
+  - Two-column layout
+  - Text-first index
+  - Lots of whitespace
+  - Responsive: stacks on mobile
+========================================================= */
+
+:root {
+  --bg: #ffffff;
+  --text: #111111;
+  --muted: rgba(17, 17, 17, 0.6);
+  --rule: rgba(17, 17, 17, 0.12);
+  --max: 1180px;
+  --sidebar: 320px;
+  --gap: 32px;
+
+  --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica,
+    Arial, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.45;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.page {
+  width: min(100% - 32px, var(--max));
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: var(--sidebar) 1fr;
+  gap: var(--gap);
+  padding: 28px 0 60px;
+}
+
+/* =======================
+   Sidebar (left)
+======================= */
+.sidebar {
+  position: relative;
+}
+
+.sidebar-inner {
+  position: sticky;
+  top: 18px;
+  padding-right: 8px;
+}
+
+.intro h1 {
+  margin: 0 0 10px;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.index-block {
+  margin-top: 18px;
+}
+
+.index-block h2 {
+  margin: 0 0 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.index-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.index-list li {
+  margin: 6px 0;
+  font-size: 14px;
+}
+
+.sidebar-footer {
+  margin-top: 26px;
+  padding-top: 14px;
+  border-top: 1px solid var(--rule);
+  font-size: 13px;
+}
+
+/* =======================
+   Content (right)
+======================= */
+.content {
+  min-width: 0;
+}
+
+.project {
+  padding: 0 0 34px;
+  margin: 0 0 34px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.project-client {
+  margin: 0 0 6px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.project-title {
+  margin: 0 0 14px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.project-meta {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+
+.project-meta p {
+  margin: 4px 0;
+}
+
+.project-number {
+  color: var(--text);
+  letter-spacing: 0.08em;
+  margin-top: 10px;
+}
+
+/* Media */
+.media {
+  margin-top: 14px;
+}
+
+/* Responsive video embed */
+.embed {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #f3f3f3;
+}
+
+.embed iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.media img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Simple photo gallery grid */
+.gallery {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.content-footer {
+  padding-top: 10px;
+  font-size: 14px;
+}
+
+/* =======================
+   Mobile: stack columns
+======================= */
+@media (max-width: 860px) {
+  .page {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .sidebar-inner {
+    position: static;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 18px;
+    margin-bottom: 10px;
+  }
+
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+}

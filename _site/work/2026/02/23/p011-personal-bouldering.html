@@ -292,37 +292,16 @@
 
       /* =========================================================
         VIDEO EMBEDS
-        - Centered, consistent max-width
-        - No colored background (use page background)
       ========================================================== */
       .embed {
         position: relative;
         width: 100%;
-        max-width: 720px;
-        margin: 0 auto;
         aspect-ratio: 16 / 9;
-        background: var(--bg);
+        background: color-mix(in srgb, var(--bg) 92%, var(--text) 8%);
         border: 1px solid var(--rule);
       }
 
-      /* Embed with only an image: no forced aspect ratio, center image */
-      .embed:has(img:only-child) {
-        aspect-ratio: auto;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .embed:has(img:only-child) img {
-        max-width: 100%;
-        width: auto;
-        height: auto;
-        max-height: 70vh;
-        display: block;
-      }
-
-      .embed iframe,
-      .embed video {
+      .embed iframe {
         position: absolute;
         inset: 0;
         width: 100%;
@@ -332,12 +311,9 @@
 
       /* =========================================================
         PHOTO CAROUSEL (no grid)
-        - Centered, same max-width as embed; no colored background
       ========================================================== */
       .carousel {
         position: relative;
-        max-width: 720px;
-        margin: 0 auto;
         border: 1px solid var(--rule);
         background: var(--bg);
         overflow: hidden;
@@ -363,7 +339,6 @@
         width: 100%;
         height: auto;
         display: block;
-        object-fit: contain;
       }
 
       .carousel-caption {
@@ -378,7 +353,7 @@
         top: 50%;
         transform: translateY(-50%);
         border: 1px solid var(--rule);
-        background: var(--bg);
+        background: color-mix(in srgb, var(--bg) 88%, transparent 12%);
         color: var(--text);
         width: 38px;
         height: 38px;
@@ -469,16 +444,12 @@
       <aside class="sidebar">
         <div class="sidebar-inner">
           <header class="intro">
-            <h1><a href="{{ "/" | relative_url }}">Your Name</a></h1>
+            <h1><a href="/">Your Name</a></h1>
             <p class="bio muted">
               City born and raised photographer and director.<br />
               Founder and creative director of the brand YourBrand.
             </p>
-            {% if page.url == "/" %}
-            <p class="bio-link">
-              <a href="{{ "/about/" | relative_url }}">About</a>
-            </p>
-            {% endif %}
+            
           </header>
 
           <section class="index-block" aria-label="Work index">
@@ -523,7 +494,47 @@
 
       <!-- RIGHT COLUMN / CONTENT -->
       <main class="content" id="top">
-        {{ content }}
+        <!-- 011 (carousel) -->
+<article class="project" id="p011">
+  <div class="project-head">
+    <div>
+      <div class="project-client"><a href="#p011">Personal</a></div>
+      <div class="project-title">Bouldering</div>
+    </div>
+    <div class="project-number">011</div>
+  </div>
+
+  <div class="project-meta">
+    <p>Carousel presentation (one photo at a time).</p>
+  </div>
+
+  <div class="carousel" data-carousel="" aria-label="Photo carousel 011">
+    <div class="carousel-viewport">
+      <div class="carousel-track" data-track="">
+        <figure class="carousel-slide">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/60/Earth_from_Space.jpg" alt="Earth from Space (public domain NASA image via Wikimedia)" loading="lazy" />
+          <figcaption class="carousel-caption">Series image 1</figcaption>
+        </figure>
+
+        <figure class="carousel-slide">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/The_Blue_Marble.jpg" alt="The Blue Marble — Earth photographed during Apollo 17 (public domain NASA image via Wikimedia)" loading="lazy" />
+          <figcaption class="carousel-caption">Series image 2</figcaption>
+        </figure>
+
+        <figure class="carousel-slide">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/c/ce/Apollo_13_-_View_of_Earth.jpg" alt="Apollo 13 view of Earth (public domain NASA image via Wikimedia)" loading="lazy" />
+          <figcaption class="carousel-caption">Series image 3</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <button class="carousel-btn prev" type="button" data-prev="" aria-label="Previous photo">‹</button>
+    <button class="carousel-btn next" type="button" data-next="" aria-label="Next photo">›</button>
+    <div class="carousel-dots" data-dots="" aria-label="Carousel pagination"></div>
+  </div>
+</article>
+
+
       </main>
     </div>
 

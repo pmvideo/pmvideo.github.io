@@ -292,37 +292,16 @@
 
       /* =========================================================
         VIDEO EMBEDS
-        - Centered, consistent max-width
-        - No colored background (use page background)
       ========================================================== */
       .embed {
         position: relative;
         width: 100%;
-        max-width: 720px;
-        margin: 0 auto;
         aspect-ratio: 16 / 9;
-        background: var(--bg);
+        background: color-mix(in srgb, var(--bg) 92%, var(--text) 8%);
         border: 1px solid var(--rule);
       }
 
-      /* Embed with only an image: no forced aspect ratio, center image */
-      .embed:has(img:only-child) {
-        aspect-ratio: auto;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .embed:has(img:only-child) img {
-        max-width: 100%;
-        width: auto;
-        height: auto;
-        max-height: 70vh;
-        display: block;
-      }
-
-      .embed iframe,
-      .embed video {
+      .embed iframe {
         position: absolute;
         inset: 0;
         width: 100%;
@@ -332,12 +311,9 @@
 
       /* =========================================================
         PHOTO CAROUSEL (no grid)
-        - Centered, same max-width as embed; no colored background
       ========================================================== */
       .carousel {
         position: relative;
-        max-width: 720px;
-        margin: 0 auto;
         border: 1px solid var(--rule);
         background: var(--bg);
         overflow: hidden;
@@ -363,7 +339,6 @@
         width: 100%;
         height: auto;
         display: block;
-        object-fit: contain;
       }
 
       .carousel-caption {
@@ -378,7 +353,7 @@
         top: 50%;
         transform: translateY(-50%);
         border: 1px solid var(--rule);
-        background: var(--bg);
+        background: color-mix(in srgb, var(--bg) 88%, transparent 12%);
         color: var(--text);
         width: 38px;
         height: 38px;
@@ -469,16 +444,12 @@
       <aside class="sidebar">
         <div class="sidebar-inner">
           <header class="intro">
-            <h1><a href="{{ "/" | relative_url }}">Your Name</a></h1>
+            <h1><a href="/">Your Name</a></h1>
             <p class="bio muted">
               City born and raised photographer and director.<br />
               Founder and creative director of the brand YourBrand.
             </p>
-            {% if page.url == "/" %}
-            <p class="bio-link">
-              <a href="{{ "/about/" | relative_url }}">About</a>
-            </p>
-            {% endif %}
+            
           </header>
 
           <section class="index-block" aria-label="Work index">
@@ -523,7 +494,24 @@
 
       <!-- RIGHT COLUMN / CONTENT -->
       <main class="content" id="top">
-        {{ content }}
+        <!-- 002 -->
+<article class="project" id="p002">
+  <div class="project-head">
+    <div>
+      <div class="project-client"><a href="#p002">Reddit</a></div>
+      <div class="project-title">IT'S POWER TO THE TRADERS NOW</div>
+    </div>
+    <div class="project-number">002</div>
+  </div>
+  <div class="project-meta">
+    <p>217,000+ upvotes on r/wallstreetbets</p>
+    <p>Viral post during Wall Street Bets drama</p>
+  </div>
+  <div class="embed">
+    <video src="https://packaged-media.redd.it/lu8aekujd6e61/pb/m2-res_480p.mp4?m=DASHPlaylist.mpd&amp;v=1&amp;e=1772157600&amp;s=5250ce160d761ba9b22e7a86f1dd78280e30e960" controls="" loading="lazy" playsinline=""></video>
+  </div>
+</article>
+
       </main>
     </div>
 

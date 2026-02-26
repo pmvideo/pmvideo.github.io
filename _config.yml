@@ -2,3 +2,12 @@ title: "Your Name — Portfolio"
 email: "you@example.com"
 description: "Portfolio — videos and photos."
 
+markdown: kramdown
+kramdown:
+  input: kramdown
+  syntax_highlighter: rouge
+
+exclude:
+  - "*.code-workspace"
+  - Gemfile
+  - Gemfile.lock

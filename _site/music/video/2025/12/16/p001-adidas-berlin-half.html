@@ -292,37 +292,16 @@
 
       /* =========================================================
         VIDEO EMBEDS
-        - Centered, consistent max-width
-        - No colored background (use page background)
       ========================================================== */
       .embed {
         position: relative;
         width: 100%;
-        max-width: 720px;
-        margin: 0 auto;
         aspect-ratio: 16 / 9;
-        background: var(--bg);
+        background: color-mix(in srgb, var(--bg) 92%, var(--text) 8%);
         border: 1px solid var(--rule);
       }
 
-      /* Embed with only an image: no forced aspect ratio, center image */
-      .embed:has(img:only-child) {
-        aspect-ratio: auto;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .embed:has(img:only-child) img {
-        max-width: 100%;
-        width: auto;
-        height: auto;
-        max-height: 70vh;
-        display: block;
-      }
-
-      .embed iframe,
-      .embed video {
+      .embed iframe {
         position: absolute;
         inset: 0;
         width: 100%;
@@ -332,12 +311,9 @@
 
       /* =========================================================
         PHOTO CAROUSEL (no grid)
-        - Centered, same max-width as embed; no colored background
       ========================================================== */
       .carousel {
         position: relative;
-        max-width: 720px;
-        margin: 0 auto;
         border: 1px solid var(--rule);
         background: var(--bg);
         overflow: hidden;
@@ -363,7 +339,6 @@
         width: 100%;
         height: auto;
         display: block;
-        object-fit: contain;
       }
 
       .carousel-caption {
@@ -378,7 +353,7 @@
         top: 50%;
         transform: translateY(-50%);
         border: 1px solid var(--rule);
-        background: var(--bg);
+        background: color-mix(in srgb, var(--bg) 88%, transparent 12%);
         color: var(--text);
         width: 38px;
         height: 38px;
@@ -469,16 +444,12 @@
       <aside class="sidebar">
         <div class="sidebar-inner">
           <header class="intro">
-            <h1><a href="{{ "/" | relative_url }}">Your Name</a></h1>
+            <h1><a href="/">Your Name</a></h1>
             <p class="bio muted">
               City born and raised photographer and director.<br />
               Founder and creative director of the brand YourBrand.
             </p>
-            {% if page.url == "/" %}
-            <p class="bio-link">
-              <a href="{{ "/about/" | relative_url }}">About</a>
-            </p>
-            {% endif %}
+            
           </header>
 
           <section class="index-block" aria-label="Work index">
@@ -523,7 +494,52 @@
 
       <!-- RIGHT COLUMN / CONTENT -->
       <main class="content" id="top">
-        {{ content }}
+        <!-- 001 -->
+<article class="project" id="p001">
+  <div class="project-head">
+    <div>
+      <div class="project-client">
+        <a href="#p001">John Stammer</a>
+      </div>
+      <div class="project-title">Idle I’m — Lyric Video</div>
+    </div>
+    <div class="project-number">001</div>
+  </div>
+
+  <div class="project-meta">
+    <p>Type: Lyric video</p>
+    <p>Filmed: Northern California (2025)</p>
+    <p>Camera: Canon XA10</p>
+    <p>Song released: February 28, 2011</p>
+    <p>Video posted: December 17, 2025</p>
+  </div>
+
+  <div class="project-description">
+    <p>
+      Lyric video for John Stammer's song <em>"Idle I'm"</em>.
+    </p>
+
+    <p>
+      I discovered this track a bit randomly on an ambient DJ set. It kept looping in my head and when trying to pull up the track on YouTube, I realized it didn't have any sort of music video or visuals to accompany it.
+    </p>
+
+    <p>
+      The song fills me with memories of end of summer days in California – those times teetering between September and October where the heat begins to dip a few notches and the bittersweet feeling that the best days are behind you.
+    </p>
+
+    <p>
+      Support the artist here:
+      <a href="https://wonderfulsound.bandcamp.com/track/idle-im" target="_blank" rel="noopener">
+        wonderfulsound.bandcamp.com/track/idle-im
+      </a>
+    </p>
+  </div>
+
+  <div class="embed">
+    <iframe src="https://www.youtube.com/embed/xc1etZHbMxA" title="Idle I’m — Unofficial Lyric Video" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+  </div>
+</article>
+
       </main>
     </div>
 

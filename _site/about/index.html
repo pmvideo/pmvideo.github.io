@@ -292,37 +292,16 @@
 
       /* =========================================================
         VIDEO EMBEDS
-        - Centered, consistent max-width
-        - No colored background (use page background)
       ========================================================== */
       .embed {
         position: relative;
         width: 100%;
-        max-width: 720px;
-        margin: 0 auto;
         aspect-ratio: 16 / 9;
-        background: var(--bg);
+        background: color-mix(in srgb, var(--bg) 92%, var(--text) 8%);
         border: 1px solid var(--rule);
       }
 
-      /* Embed with only an image: no forced aspect ratio, center image */
-      .embed:has(img:only-child) {
-        aspect-ratio: auto;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .embed:has(img:only-child) img {
-        max-width: 100%;
-        width: auto;
-        height: auto;
-        max-height: 70vh;
-        display: block;
-      }
-
-      .embed iframe,
-      .embed video {
+      .embed iframe {
         position: absolute;
         inset: 0;
         width: 100%;
@@ -332,12 +311,9 @@
 
       /* =========================================================
         PHOTO CAROUSEL (no grid)
-        - Centered, same max-width as embed; no colored background
       ========================================================== */
       .carousel {
         position: relative;
-        max-width: 720px;
-        margin: 0 auto;
         border: 1px solid var(--rule);
         background: var(--bg);
         overflow: hidden;
@@ -363,7 +339,6 @@
         width: 100%;
         height: auto;
         display: block;
-        object-fit: contain;
       }
 
       .carousel-caption {
@@ -378,7 +353,7 @@
         top: 50%;
         transform: translateY(-50%);
         border: 1px solid var(--rule);
-        background: var(--bg);
+        background: color-mix(in srgb, var(--bg) 88%, transparent 12%);
         color: var(--text);
         width: 38px;
         height: 38px;
@@ -469,16 +444,12 @@
       <aside class="sidebar">
         <div class="sidebar-inner">
           <header class="intro">
-            <h1><a href="{{ "/" | relative_url }}">Your Name</a></h1>
+            <h1><a href="/">Your Name</a></h1>
             <p class="bio muted">
               City born and raised photographer and director.<br />
               Founder and creative director of the brand YourBrand.
             </p>
-            {% if page.url == "/" %}
-            <p class="bio-link">
-              <a href="{{ "/about/" | relative_url }}">About</a>
-            </p>
-            {% endif %}
+            
           </header>
 
           <section class="index-block" aria-label="Work index">
@@ -523,7 +494,64 @@
 
       <!-- RIGHT COLUMN / CONTENT -->
       <main class="content" id="top">
-        {{ content }}
+        <section class="about-layout" aria-labelledby="about-heading">
+  <div class="about-left">
+    <h2 id="about-heading" class="about-section-title">About</h2>
+    <p>
+      Hey, I'm Your Name — a photographer and director based in City. I collaborate with brands,
+      artists, and agencies to create considered, human-first visuals.
+    </p>
+    <p>
+      My visual style and approach are a direct representation of my spirit — authentic, curious,
+      and colourful.
+    </p>
+
+    <h3 class="about-section-title">Selected clients</h3>
+    <ul class="about-list">
+      <li>Client One</li>
+      <li>Client Two</li>
+      <li>Client Three</li>
+      <li>Client Four</li>
+      <li>Client Five</li>
+    </ul>
+
+    <h3 class="about-section-title">Press</h3>
+    <ul class="about-list">
+      <li>Publication One</li>
+      <li>Publication Two</li>
+      <li>Publication Three</li>
+      <li>Publication Four</li>
+    </ul>
+
+    <h3 class="about-section-title">Social</h3>
+    <ul class="about-list">
+      <li><a href="https://vimeo.com" target="_blank" rel="noreferrer">Vimeo</a></li>
+      <li><a href="https://instagram.com" target="_blank" rel="noreferrer">Instagram</a></li>
+      <li><a href="https://linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a></li>
+    </ul>
+  </div>
+
+  <div class="about-right">
+    <div class="about-contact-group">
+      <h3 class="about-section-title">Commercial inquiries</h3>
+      <p><a href="mailto:you@example.com">you@example.com</a></p>
+    </div>
+
+    <div class="about-contact-group">
+      <h3 class="about-section-title">General inquiries &amp; press</h3>
+      <p><a href="mailto:you@example.com">you@example.com</a></p>
+    </div>
+
+    <figure class="about-photo">
+      <img
+        src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&amp;fit=crop&amp;w=1200&amp;q=80"
+        alt="Portrait in a landscape"
+      />
+    </figure>
+  </div>
+</section>
+
+
       </main>
     </div>
 
