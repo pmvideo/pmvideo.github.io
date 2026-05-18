@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Patrick Moran Videography</title>
+<meta name="description" content="Direction, cinematography and edit by Patrick Moran." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav>
+  <ul>
+    <li><a href="#portfolio">Videos</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <!-- Replace src below with your own widescreen looping gif -->
+  <img class="hero-media" src="https://media.giphy.com/media/3o7TKSjRrfIPjeiVyM/giphy.gif" alt="" aria-hidden="true">
+  <div class="hero-overlay"></div>
+  <h1 class="hero-title">Patrick Moran Videography</h1>
+  <div class="scroll-hint">Scroll</div>
+</header>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="portfolio-header reveal">
+    <span class="section-label">Selected Work</span>
+    <h2>A reflection of place,<br>people, and time.</h2>
+  </div>
+
+  <article class="project reveal">
+    <div class="video-wrap">
+      <iframe
+        src="https://player.vimeo.com/video/76979871?title=0&byline=0&portrait=0"
+        allow="autoplay; fullscreen; picture-in-picture"
+        allowfullscreen
+        title="Project One"></iframe>
+    </div>
+    <div class="project-info">
+      <h3>Nevertheless <em>— Taro Watanabe</em></h3>
+      <p class="project-description">
+        A reflection of time in Peru and the experience of the Palisades fire,
+        captured through long takes and quiet moments between waves.
+      </p>
+      <div class="project-meta">
+        <span>Direction</span>
+        <span>Cinematography</span>
+        <span>Edit</span>
+        <span>2025</span>
+      </div>
+    </div>
+  </article>
+
+  <article class="project reveal">
+    <div class="video-wrap">
+      <iframe
+        src="https://player.vimeo.com/video/148751763?title=0&byline=0&portrait=0"
+        allow="autoplay; fullscreen; picture-in-picture"
+        allowfullscreen
+        title="Project Two"></iframe>
+    </div>
+    <div class="project-info">
+      <h3>Quiet Light <em>— Studio Vetro</em></h3>
+      <p class="project-description">
+        A short brand film for a coastal glassblowing studio. Shot over three
+        mornings in northern California, following a single artisan's process
+        from raw material to finished form.
+      </p>
+      <div class="project-meta">
+        <span>Cinematography</span>
+        <span>Edit</span>
+        <span>Color</span>
+        <span>2025</span>
+      </div>
+    </div>
+  </article>
+
+  <article class="project reveal">
+    <div class="video-wrap">
+      <iframe
+        src="https://player.vimeo.com/video/22439234?title=0&byline=0&portrait=0"
+        allow="autoplay; fullscreen; picture-in-picture"
+        allowfullscreen
+        title="Project Three"></iframe>
+    </div>
+    <div class="project-info">
+      <h3>North of Here <em>— Independent</em></h3>
+      <p class="project-description">
+        A meditative travel piece documenting a week along the Pacific Coast
+        Highway. No script, no narration &mdash; only the road, the fog, and
+        the small towns that hold them both.
+      </p>
+      <div class="project-meta">
+        <span>Direction</span>
+        <span>Cinematography</span>
+        <span>Edit</span>
+        <span>2024</span>
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="about">
+  <div class="about-inner reveal">
+    <div class="about-photo"></div>
+    <span class="section-label">About</span>
+    <h2>Patrick Moran</h2>
+    <p>
+      Patrick is a director and cinematographer based on the California coast.
+      His work moves between documentary, brand film, and personal essay, with
+      a particular attention to the texture of light and the way a single
+      gesture can carry an entire story. Trained in the discipline of long
+      observation, he favors unhurried frames and the kind of editing that
+      lets a moment breathe. Past collaborators include independent artists,
+      coastal makers, and small studios from Seacliff to Lima. He works with
+      a small crew, or alone, depending on what the story asks for.
+    </p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner reveal">
+    <span class="section-label">Get in Touch</span>
+    <p class="contact-eyebrow">Have a story worth telling?</p>
+    <a class="contact-email" href="mailto:hello@patrickmoran.video">hello@patrickmoran.video</a>
+  </div>
+</section>
+
+<footer>
+  &copy; 2026 Patrick Moran &nbsp;<span>&bull;</span>&nbsp; All Rights Reserved
+</footer>
+
+<script>
+  // Reveal-on-scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+
+  document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+</script>
+
+</body>
+</html>
