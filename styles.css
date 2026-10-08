@@ -104,18 +104,21 @@ nav a:hover::after { width: 100%; }
   z-index: 1;
 }
 
+/* Small title tucked into the bottom-left corner of the video */
 .hero-title {
-  position: relative;
+  position: absolute;
+  left: 48px;
+  bottom: 40px;
   z-index: 3;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 700;
   font-style: italic;
-  font-size: clamp(2.2rem, 6.5vw, 5rem);
+  text-transform: uppercase;
+  font-size: clamp(1.4rem, 2.6vw, 2.4rem);
   letter-spacing: 0.01em;
   line-height: 1.1;
-  text-align: center;
+  text-align: left;
   color: var(--white);
-  padding: 0 24px;
   text-shadow: 0 2px 30px rgba(0, 0, 0, 0.5);
   animation: fadeUp 1.4s ease 0.2s both;
 }
@@ -361,6 +364,9 @@ footer span {
   nav { padding: 20px 24px; }
   nav ul { gap: 24px; }
   nav a { font-size: 12px; }
+
+  /* Sit above the Scroll hint so they don't overlap on phones */
+  .hero-title { left: 24px; bottom: 120px; }
 
   #portfolio { padding: 120px 20px 80px; }
   .portfolio-header { margin-bottom: 80px; }
